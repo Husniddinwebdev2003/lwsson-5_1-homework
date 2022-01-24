@@ -101,4 +101,25 @@ function controller(conFirst, conSecond, conThrid, FirstItem, ScondItem, ThridIt
 controller("first", "second", "third", "oneItem", "twoItem", "threeItem");
 controller("second", "first", "third", "twoItem", "oneItem", "threeItem");
 controller("third", "second", "first", "threeItem", "twoItem", "oneItem");
+
+let count = 0;
+function slider() {
+    count += 1;
+    if(count === 3) {
+        count = 0;
+    }
+    const controller = document.querySelectorAll("#sliderContriols > span");
+    const sliderItems = document.querySelectorAll(".slider__list > ul >li");
+    for(let i = 0; i < controller.length; i++) {
+        sliderItems[i].classList.remove("active");
+        controller[i].classList.remove("check");
+    }
+    sliderItems[count].classList.add("active");
+    controller[count].classList.add("check");
+}
+
+setInterval(() => {
+    slider();
+}, 5000);
+
 // slider section finished
